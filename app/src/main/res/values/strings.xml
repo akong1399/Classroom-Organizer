@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Classroom Organizer Java</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="Student_View">Student View</string>
+    <string name="Calendar_View">Calendar View</string>
+    <string name="Add_Student">Add Student</string>
+    <string name="Remove_Student">Remove Student</string>
+    <string name="Naptime">Naptime</string>
+    <string name="EditPage">Edit Page</string>
+    <string name="StudentName">Student Name</string>
+    <string name="ExistingTasks">Existing Tasks</string>
+    <string name="EnterTaskInfo">Enter Task Information</string>
+    <string name="TaskName">Name</string>
+    <string name="TaskTime">Time</string>
+    <string name="TaskFrequency">Frequency</string>
+    <string name="TaskAudio">Audio</string>
+    <string name="SaveTask">Save Task</string>
+    <string name="SaveAddStudent">Save</string>
+    <string name="EditTaskList">Edit Task List</string>
+    <string name="SelectStudentRemove">Select Student to Remove</string>
+    <string name="SaveRemoveStudent">Save</string>
+    <string name="EnterStudentName">Enter Student Name</string>
+    <string name="EnterTaskName">Enter Task Name</string>
+    <string name="EnterTaskTime">Enter Task Time</string>
+    <string name="EnterTaskFreq">Enter Task Frequency</string>
+    <string name="EnterTaskAudio">Enter Task Audio</string>
+    <string name="SelectAudio">Select Audio</string>
+    <string name="Monday">M</string>
+    <string name="Friday">F</string>
+    <string name="Thursday">Th</string>
+    <string name="Wednesday">W</string>
+    <string name="Tuesday">Tu</string>
+    <string-array name="Audios">
+        <item>Daniel Tiger</item>
+        <item>Peppa Pig</item>
+        <item>Custom Audio 1</item>
+        <item>Custom Audio 2</item>
+        <item>Custom Audio 3</item>
+    </string-array>
+</resources>
