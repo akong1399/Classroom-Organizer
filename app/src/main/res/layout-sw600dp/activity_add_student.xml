@@ -239,14 +239,14 @@
         app:layout_constraintTop_toBottomOf="@+id/task_time_TextTime" />
 
     <RadioButton
-        android:id="@+id/friday_radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="74dp"
-        android:text="@string/Friday"
-        app:layout_constraintStart_toEndOf="@+id/thursday_radioButton"
-        app:layout_constraintTop_toBottomOf="@+id/task_name_EditText" />
+      android:id="@+id/friday_radioButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="74dp"
+      android:layout_marginStart="8dp"
+      android:text="@string/Friday"
+      app:layout_constraintStart_toEndOf="@+id/thursday_radioButton"
+      app:layout_constraintTop_toBottomOf="@+id/task_name_EditText" />
 
     <EditText
         android:id="@+id/task_time_TextTime"
