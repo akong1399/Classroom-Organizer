@@ -11,51 +11,42 @@ import androidx.annotation.RequiresApi;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Task {
 
+  private static final String TAG = "Task";
   private String name;
-  private DayOfWeek[] days;
-  private LocalTime time;
+  private String days;
+  private String time;
   private String audio;
 
   @SuppressLint("NewApi")
-  public Task(String name, DayOfWeek[] days, String time, String audio) {
+  public Task(String name, String days, String time, String audio) {
     this.name = name;
     this.days = days;
-    this.time = LocalTime.parse(time);
+    this.time = time;
     this.audio = audio;
   }
 
   @SuppressLint("NewApi")
   public Task(String line) {
     String[] items = line.split(", ");
-    this.name = items[0];
-    try {
-      this.time = LocalTime.parse(items[2]);
-    }
-    catch (Exception e) {
-      System.out.println("Task Parsing FAILED :(");
-      System.out.println("Parsing: " + line);
-    }
-    this.audio = items[3];
-    String[] weekdays = items[1].trim().split(" ");
-    DayOfWeek[] temp = new DayOfWeek[weekdays.length];
-    for (int i = 0; i < temp.length; i++) {
-      temp[i] = DayOfWeek.valueOf(weekdays[i].trim());
-    }
-    this.days = temp;
+    this.name = items[0].trim();
+    this.days = items[1].trim();
+    this.time = items[2].trim();
+    this.audio = items[3].trim();
   }
 
   public String getName() {
     return name;
   }
 
-  public LocalTime getTime() {
+  public String getTime() {
     return time;
   }
 
-  public DayOfWeek[] getDays() {
+  public String getDays() {
     return days;
   }
 
@@ -63,30 +54,27 @@ public class Task {
     return audio;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Task task = (Task) o;
+    return Objects.equals(name, task.name) && Objects.equals(days, task.days)
+        && Objects.equals(time, task.time) && Objects.equals(audio, task.audio);
   }
 
-  public void setTime(LocalTime time) {
-    this.time = time;
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, days, time, audio);
   }
-
-  public void setDays(DayOfWeek[] days) {
-    this.days = days;
-  }
-
-  public void setAudio(String audio) {
-    this.audio = audio;
-  }
-
 
   @NonNull
   @Override
   public String toString() {
-    String d = "";
-    for (Enum e : this.days) {
-      d += e.toString() + " ";
-    }
-    return "Task\n" + this.name + ", " + d + ", " + this.time + ", " + this.audio + "\n";
+    return this.name + ", " + this.days + ", " + this.time + ", " + this.audio;
   }
 }

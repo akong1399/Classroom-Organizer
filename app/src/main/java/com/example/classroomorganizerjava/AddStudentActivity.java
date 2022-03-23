@@ -1,6 +1,8 @@
 package com.example.classroomorganizerjava;
 
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import java.util.Map;
 
 public class AddStudentActivity extends AppCompatActivity {
 
+  private static final String TAG = "AddStudentActivity";
   private Button button;
 
   @Override
@@ -24,13 +27,13 @@ public class AddStudentActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_add_student);
 
-    // Get the Intent that started this activity and extract the string
-//    Intent intent = getIntent();
-    String message = "Page for adding students";
-
-    // Capture the layout's TextView and set the string as its text
-    TextView textView = findViewById(R.id.add_student_textview);
-    textView.setText(message);
+//    // Get the Intent that started this activity and extract the string
+////    Intent intent = getIntent();
+//    String message = "Page for adding students and tasks";
+//
+//    // Capture the layout's TextView and set the string as its text
+//    TextView textView = findViewById(R.id.add_student_textview);
+//    textView.setText(message);
 
     Spinner spinnerAudios = findViewById(R.id.audio_menu_spinner);
     ArrayAdapter<CharSequence> adapter = ArrayAdapter
@@ -118,24 +121,26 @@ public class AddStudentActivity extends AppCompatActivity {
       }
     });
 
-    EditText nameView = findViewById(R.id.task_name_EditText);
-    EditText timeView = findViewById(R.id.task_time_TextTime);
-    RadioButton[] days = new RadioButton[]{mondayRadioButton, tuesdayRadioButton,
-        wednesdayRadioButton, thursdayRadioButton, fridayRadioButton};
-    Map<String,String> fullDays = new HashMap<>();
-    fullDays.put("M","MONDAY");
-    fullDays.put("Tu","TUESDAY");
-    fullDays.put("W","WEDNESDAY");
-    fullDays.put("Th","THURSDAY");
-    fullDays.put("F","FRIDAY");
-
     button = (Button) findViewById(R.id.save_task_button);
     button.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         startActivity(new Intent(AddStudentActivity.this, AddStudentActivity.class));
+
+        EditText studentName = findViewById(R.id.student_name_EditText);
+        EditText nameView = findViewById(R.id.task_name_EditText);
+        EditText timeView = findViewById(R.id.task_time_TextTime);
+        RadioButton[] days = new RadioButton[]{mondayRadioButton, tuesdayRadioButton,
+            wednesdayRadioButton, thursdayRadioButton, fridayRadioButton};
+        Map<String,String> fullDays = new HashMap<>();
+        fullDays.put("M","MONDAY");
+        fullDays.put("Tu","TUESDAY");
+        fullDays.put("W","WEDNESDAY");
+        fullDays.put("Th","THURSDAY");
+        fullDays.put("F","FRIDAY");
+
         try {
-          String task = "";
+          String task = studentName.getText().toString() + "\n";
           task += nameView.getText().toString() + ", ";
           for (RadioButton rb : days) {
             if (rb.isChecked()){
@@ -146,10 +151,26 @@ public class AddStudentActivity extends AppCompatActivity {
           task += spinnerAudios.getSelectedItem().toString();
           Intent i = new Intent(AddStudentActivity.this, MainActivity.class);
           i.putExtra("newTaskString",task);
-          System.out.println("New Task here: " + task);
+          Log.i(TAG, "New Task here: " + task);
           startActivity(i);
         } catch (Exception e) {
-          System.out.println("Problem adding new task - task couldn't be created");
+          Log.e(TAG, "Problem adding new task - task couldn't be created\n" + e);
+        }
+      }
+    });
+
+    button = findViewById(R.id.deleteStudentButton);
+    button.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        startActivity(new Intent(AddStudentActivity.this, AddStudentActivity.class));
+        try {
+          EditText studentName = findViewById(R.id.student_name_EditText);
+          Intent i = new Intent(AddStudentActivity.this, MainActivity.class);
+          i.putExtra("deleteStudentName",studentName.getText().toString());
+          startActivity(i);
+        } catch (Exception e) {
+          e.printStackTrace();
         }
       }
     });

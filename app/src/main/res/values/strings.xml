@@ -1,41 +1,77 @@
 <resources>
-    <string name="app_name">Classroom Organizer Java</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="Student_View">Student View</string>
-    <string name="Calendar_View">Calendar View</string>
-    <string name="Add_Student">Add Student</string>
-    <string name="Remove_Student">Remove Student</string>
-    <string name="Naptime">Naptime</string>
-    <string name="EditPage">Edit Page</string>
-    <string name="StudentName">Student Name</string>
-    <string name="ExistingTasks">Existing Tasks</string>
-    <string name="EnterTaskInfo">Enter Task Information</string>
-    <string name="TaskName">Name</string>
-    <string name="TaskTime">Time</string>
-    <string name="TaskFrequency">Frequency</string>
-    <string name="TaskAudio">Audio</string>
-    <string name="SaveTask">Save Task</string>
-    <string name="SaveAddStudent">Save</string>
-    <string name="EditTaskList">Edit Task List</string>
-    <string name="SelectStudentRemove">Select Student to Remove</string>
-    <string name="SaveRemoveStudent">Save</string>
-    <string name="EnterStudentName">Enter Student Name</string>
-    <string name="EnterTaskName">Enter Task Name</string>
-    <string name="EnterTaskTime">Enter Task Time</string>
-    <string name="EnterTaskFreq">Enter Task Frequency</string>
-    <string name="EnterTaskAudio">Enter Task Audio</string>
-    <string name="SelectAudio">Select Audio</string>
-    <string name="Monday">M</string>
-    <string name="Friday">F</string>
-    <string name="Thursday">Th</string>
-    <string name="Wednesday">W</string>
-    <string name="Tuesday">Tu</string>
-    <string-array name="Audios">
-        <item>Daniel Tiger</item>
-        <item>Peppa Pig</item>
-        <item>Custom Audio 1</item>
-        <item>Custom Audio 2</item>
-        <item>Custom Audio 3</item>
-    </string-array>
+  <string name="app_name">Classroom Organizer Java</string>
+  <string name="tab_text_1">Tab 1</string>
+  <string name="tab_text_2">Tab 2</string>
+  <string name="Student_View">Student View</string>
+  <string name="Calendar_View">Calendar View</string>
+  <string name="Add_Student">Add Student</string>
+  <string name="Remove_Student">Remove Student</string>
+  <string name="Naptime">Naptime</string>
+  <string name="EditPage">Edit Page</string>
+  <string name="StudentName">Student Name</string>
+  <string name="ExistingTasks">Existing Tasks</string>
+  <string name="EnterTaskInfo">Enter Task Information</string>
+  <string name="TaskName">Name</string>
+  <string name="TaskTime">Time</string>
+  <string name="TaskFrequency">Frequency</string>
+  <string name="TaskAudio">Audio</string>
+  <string name="SaveTask">Save Task</string>
+  <string name="SaveAddStudent">Save</string>
+  <string name="EditTaskList">Edit Task List</string>
+  <string name="SelectStudentRemove">Select Student to Remove</string>
+  <string name="SaveRemoveStudent">Save</string>
+  <string name="EnterStudentName">Enter Student Name</string>
+  <string name="EnterTaskName">Enter Task Name</string>
+  <string name="EnterTaskTime">Enter Task Time</string>
+  <string name="EnterTaskFreq">Enter Task Frequency</string>
+  <string name="EnterTaskAudio">Enter Task Audio</string>
+  <string name="SelectAudio">Select Audio</string>
+  <string name="Monday">M</string>
+  <string name="Friday">F</string>
+  <string name="Thursday">Th</string>
+  <string name="Wednesday">W</string>
+  <string name="Tuesday">Tu</string>
+  <string name="AddStudentTaskMessage">Directions\nBack button closes keyboard\nInput and save student name and task to create a new task.\nIf the student does not exist,\nthey will be created with their first task.\nNames are case sensitive\nTimes are military time</string>
+  <string name="title_activity_play_audio">PlayAudioActivity</string>
+  <string name="first_fragment_label">First Fragment</string>
+  <!-- Strings used for fragments for navigation -->
+  <string name="second_fragment_label">Second Fragment</string>
+  <string name="next">Next</string>
+  <string name="previous">Previous</string>
+  <string name="hello_first_fragment">Hello first fragment</string>
+
+  <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+  <string-array name="Audios">
+    <item>Daniel Tiger</item>
+    <item>Peppa Pig</item>
+    <item>Custom Audio 1</item>
+    <item>Custom Audio 2</item>
+    <item>Custom Audio 3</item>
+  </string-array>
+  <string-array name="universal_audios">
+    <item>none</item>
+    <item>bell</item>
+    <item>blink</item>
+    <item>ring</item>
+    <item>trumpet</item>
+  </string-array>
+  <string-array name="name_audios">
+    <item>none</item>
+    <item>abraham</item>
+    <item>aj</item>
+    <item>ash</item>
+    <item>candice</item>
+    <item>iman</item>
+    <item>jonah</item>
+    <item>josiah</item>
+    <item>kyra</item>
+    <item>matthew</item>
+    <item>maya</item>
+    <item>noami</item>
+  </string-array>
+  <string-array name="task_audios">
+    <item>none</item>
+    <item>mask_check</item>
+    <item>potty_song</item>
+  </string-array>
 </resources>

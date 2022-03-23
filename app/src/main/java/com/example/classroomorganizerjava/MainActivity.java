@@ -1,10 +1,13 @@
 package com.example.classroomorganizerjava;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,29 +35,18 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
 
     c = new Classroom(getApplicationContext());
-    c = initializeFakeData();
+    getNewTaskIntent();
+    deleteStudentIntent();
 
     binding = ActivityMainBinding.inflate(getLayoutInflater());
     setContentView(R.layout.activity_main);
 
-    SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this,
-        getSupportFragmentManager());
-    ViewPager viewPager = binding.viewPager;
-    viewPager.setAdapter(sectionsPagerAdapter);
-
-    button = (Button) findViewById(R.id.student_view_button);
-    button.setOnClickListener(new View.OnClickListener() {
+    button = (Button) findViewById(R.id.fakeDataButton);
+    button.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
-        startActivity(new Intent(MainActivity.this, StudentViewActivity.class));
-      }
-    });
-
-    button = (Button) findViewById(R.id.calendar_view_button);
-    button.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        startActivity(new Intent(MainActivity.this, CalendarViewActivity.class));
+        c.initializeFakeData(getApplicationContext());
+        startActivity(new Intent(MainActivity.this, MainActivity.class));
       }
     });
 
@@ -66,25 +58,44 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-    button = (Button) findViewById(R.id.remove_student_button);
+    button = findViewById(R.id.playAudioPage);
     button.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        startActivity(new Intent(MainActivity.this, RemoveStudentActivity.class));
+        startActivity(new Intent(MainActivity.this, PlayAudioActivity.class));
       }
     });
 
-    // TODO: ??????
+    TextView classroomTextView = findViewById(R.id.classroomTextView);
+    classroomTextView.setText(c.toString());
+  }
+
+  private void mediaPlayer() {
+    MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.potty_song);
+    mediaPlayer.start(); // no need to call prepare(); create() does that for you
+  }
+
+  private void getNewTaskIntent() {
     Intent newTaskIntent = getIntent();
     Bundle newTask = newTaskIntent.getExtras();
     if (newTask != null) {
       try {
-        c.getStudent("Kevin").addTask(newTask.getString("newTaskString"));
+        String data = newTask.getString("newTaskString");
+        if (data.split("\n")[0].equals("")) {
+          Log.w(TAG,"No Student Name was Given");
+          return;
+        }
+        Student s = c.getStudent(data.split("\n")[0]);
+        if (s != null) {
+          s.addTask(data.split("\n")[1]);
+        } else {
+          c.addStudent(new Student(data), getApplicationContext());
+        }
+        Log.i(TAG,"Add New Task Success");
         c.saveFile(getApplicationContext());
-        System.out.println("new task added!");
       }
       catch (Exception e) {
-        Log.e(TAG, "Adding New Task Failed");
+        Log.e(TAG, "Adding New Task Failed\n" + e);
       }
     }
     else {
@@ -92,24 +103,22 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
-  @RequiresApi(api = Build.VERSION_CODES.O)
-  private Classroom initializeFakeData() {
-    Classroom heather = new Classroom(getApplicationContext());
-    DayOfWeek[] oddDays = {DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY, DayOfWeek.FRIDAY};
-    DayOfWeek[] evenDays = {DayOfWeek.TUESDAY, DayOfWeek.THURSDAY};
-    ArrayList<Task> tasks = new ArrayList<Task>();
-    Task t1 = new Task("potty", oddDays, "09:00", "Daniel Tiger");
-    Task t2 = new Task("mask", oddDays, "13:00", "Peppa Pig");
-    Task t3 = new Task("potty", evenDays, "10:30", "Daniel Tiger");
-    Task t4 = new Task("mask", evenDays, "14:30", "Peppa Pig");
-    tasks.add(t1);
-    tasks.add(t2);
-    heather.addStudent(new Student("Kevin", tasks),getApplicationContext());
-    tasks.clear();
-    tasks.add(t3);
-    tasks.add(t4);
-    heather.addStudent(new Student("Caves", tasks),getApplicationContext());
-    return heather;
+  private void deleteStudentIntent() {
+    Intent newTaskIntent = getIntent();
+    Bundle newTask = newTaskIntent.getExtras();
+    if (newTask != null) {
+      try {
+        String data = newTask.getString("deleteStudentName");
+        c.removeStudent(data, getApplicationContext());
+        Log.i(TAG,"Delete Student Success");
+        c.saveFile(getApplicationContext());
+      }
+      catch (Exception e) {
+        Log.e(TAG, "Delete Student Fail\n" + e);
+      }
+    }
+    else {
+      Log.i(TAG, "No Student Name Intent");
+    }
   }
-
 }

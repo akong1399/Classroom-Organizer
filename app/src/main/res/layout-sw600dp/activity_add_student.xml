@@ -1,267 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AddStudentActivity">
-
-    <TextView
-        android:id="@+id/add_student_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:text="TextView"
-        android:textColor="#757575"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck" />
-
-    <TextView
-        android:id="@+id/edit_page_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-        android:text="@string/EditPage"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/student_name_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="115dp"
-        android:text="@string/StudentName"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/existing_tasks_text"
-        android:layout_width="162dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="180dp"
-        android:text="@string/ExistingTasks"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/enter_task_info_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
-        android:text="@string/EnterTaskInfo"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/task_name_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
-        android:text="@string/TaskName"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.659"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/task_time_text"
-        android:layout_width="46dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="308dp"
-        android:text="@string/TaskTime"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.659"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/task_freq_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="360dp"
-        android:text="@string/TaskFrequency"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.668"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/task_audio_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="853dp"
-        android:layout_marginTop="416dp"
-        android:layout_marginEnd="38dp"
-        android:text="@string/TaskAudio"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/audio_menu_spinner"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".AddStudentActivity">
 
     <Button
-        android:id="@+id/save_task_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="970dp"
-        android:layout_marginTop="252dp"
-        android:text="@string/SaveTask"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enter_task_info_text" />
-
+      android:id="@+id/save_task_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="84dp"
+      android:layout_marginStart="320dp"
+      android:text="save"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
     <Button
-        android:id="@+id/save_add_student_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="550dp"
-        android:text="@string/SaveAddStudent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_student_textview" />
-
-    <Button
-        android:id="@+id/edit_task_list_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="400dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="325dp"
-        android:text="@string/EditTaskList"
-        app:layout_constraintBottom_toTopOf="@+id/audio_menu_spinner"
-        app:layout_constraintStart_toEndOf="@+id/edit_page_text"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/task_name_EditText"
-        android:layout_width="259dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="15dp"
-        android:hint="@string/EnterTaskName"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/task_name_text"
-        app:layout_constraintTop_toBottomOf="@+id/enter_task_info_text"
-        tools:ignore="TextContrastCheck" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/student_name_EditText"
-        android:layout_width="259dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="181dp"
-        android:hint="@string/EnterStudentName"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/add_student_textview"
-        app:layout_constraintHorizontal_bias="0.133"
-        app:layout_constraintStart_toEndOf="@+id/student_name_text"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck" />
-
+      android:id="@+id/deleteStudentButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="80dp"
+      android:layout_marginStart="48dp"
+      android:text="Delete Student"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+      android:id="@+id/task_time_TextTime"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:layout_marginStart="28dp"
+      android:ems="10"
+      android:hint="@string/EnterTaskTime"
+      android:inputType="time"
+      android:minHeight="48dp"
+      android:textColorHint="#757575"
+      android:textSize="15sp"
+      app:layout_constraintStart_toEndOf="@+id/task_time_text"
+      app:layout_constraintTop_toBottomOf="@+id/task_name_EditText"
+      tools:ignore="TextContrastCheck" />
+    <RadioButton
+      android:id="@+id/monday_radioButton"
+      android:layout_width="wrap_content"
+      android:layout_height="48dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginStart="16dp"
+      android:text="@string/Monday"
+      app:layout_constraintStart_toEndOf="@+id/task_freq_text"
+      app:layout_constraintTop_toBottomOf="@+id/task_time_TextTime" />
     <Spinner
-        android:id="@+id/audio_menu_spinner"
-        android:layout_width="258dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="11dp"
-        android:contentDescription="@string/EnterTaskAudio"
-        android:entries="@array/Audios"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toEndOf="@+id/task_audio_text"
-        app:layout_constraintTop_toBottomOf="@+id/monday_radioButton" />
-
+      android:id="@+id/audio_menu_spinner"
+      android:layout_width="258dp"
+      android:layout_height="52dp"
+      android:layout_marginTop="24dp"
+      android:layout_marginStart="32dp"
+      android:contentDescription="@string/EnterTaskAudio"
+      android:entries="@array/Audios"
+      android:spinnerMode="dropdown"
+      app:layout_constraintStart_toEndOf="@+id/task_audio_text"
+      app:layout_constraintTop_toBottomOf="@+id/monday_radioButton" />
+    <TextView
+      android:id="@+id/enter_task_info_text"
+      android:textStyle="bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="120dp"
+      android:text="@string/EnterTaskInfo"
+      android:textSize="20sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.671"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+      android:id="@+id/task_freq_text"
+      android:textStyle="bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="308dp"
+      android:text="@string/TaskFrequency"
+      android:textSize="17sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.532"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+      android:id="@+id/task_time_text"
+      android:textStyle="bold"
+      android:layout_width="46dp"
+      android:layout_height="22dp"
+      android:layout_marginTop="244dp"
+      android:text="@string/TaskTime"
+      android:textSize="17sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.53"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
     <RadioButton
-        android:id="@+id/monday_radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/Monday"
-        app:layout_constraintStart_toEndOf="@+id/task_freq_text"
-        app:layout_constraintTop_toBottomOf="@+id/task_time_TextTime" />
-
+      android:id="@+id/tuesday_radioButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginStart="8dp"
+      android:text="@string/Tuesday"
+      app:layout_constraintStart_toEndOf="@+id/monday_radioButton"
+      app:layout_constraintTop_toBottomOf="@+id/task_time_TextTime" />
     <RadioButton
-        android:id="@+id/tuesday_radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/Tuesday"
-        app:layout_constraintStart_toEndOf="@+id/monday_radioButton"
-        app:layout_constraintTop_toBottomOf="@+id/task_time_TextTime" />
-
+      android:id="@+id/thursday_radioButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginStart="8dp"
+      android:text="@string/Thursday"
+      app:layout_constraintStart_toEndOf="@+id/wednesday_radioButton"
+      app:layout_constraintTop_toBottomOf="@+id/task_time_TextTime" />
     <RadioButton
-        android:id="@+id/wednesday_radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/Wednesday"
-        app:layout_constraintStart_toEndOf="@+id/tuesday_radioButton"
-        app:layout_constraintTop_toBottomOf="@+id/task_time_TextTime" />
-
-    <RadioButton
-        android:id="@+id/thursday_radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/Thursday"
-        app:layout_constraintStart_toEndOf="@+id/wednesday_radioButton"
-        app:layout_constraintTop_toBottomOf="@+id/task_time_TextTime" />
-
+      android:id="@+id/wednesday_radioButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginStart="8dp"
+      android:text="@string/Wednesday"
+      app:layout_constraintStart_toEndOf="@+id/tuesday_radioButton"
+      app:layout_constraintTop_toBottomOf="@+id/task_time_TextTime" />
     <RadioButton
       android:id="@+id/friday_radioButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="74dp"
+      android:layout_marginTop="72dp"
       android:layout_marginStart="8dp"
       android:text="@string/Friday"
       app:layout_constraintStart_toEndOf="@+id/thursday_radioButton"
       app:layout_constraintTop_toBottomOf="@+id/task_name_EditText" />
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/task_name_EditText"
+      android:layout_width="259dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:layout_marginStart="32dp"
+      android:hint="@string/EnterTaskName"
+      android:minHeight="48dp"
+      android:textColorHint="#757575"
+      android:textSize="15sp"
+      app:layout_constraintStart_toEndOf="@+id/task_name_text"
+      app:layout_constraintTop_toBottomOf="@+id/enter_task_info_text"
+      tools:ignore="TextContrastCheck" />
+    <TextView
+      android:id="@+id/task_name_text"
+      android:textStyle="bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="188dp"
+      android:text="@string/TaskName"
+      android:textSize="17sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.529"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/task_time_TextTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="time"
-        android:minHeight="48dp"
-        android:hint="@string/EnterTaskTime"
-        android:textColorHint="#757575"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/task_time_text"
-        app:layout_constraintTop_toBottomOf="@+id/task_name_EditText"
-        tools:ignore="TextContrastCheck" />
+    <TextView
+      android:id="@+id/task_audio_text"
+      android:textStyle="bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="44dp"
+      android:text="@string/TaskAudio"
+      android:textSize="17sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.53"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/task_freq_text" />
+    <TextView
+      android:id="@+id/edit_page_text"
+      android:textStyle="bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="39dp"
+      android:text="Add Students and Tasks"
+      android:textSize="30sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+      android:id="@+id/student_name_text"
+      android:textStyle="bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="115dp"
+      android:layout_marginStart="48dp"
+      android:text="@string/StudentName"
+      android:textSize="20sp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+      android:id="@+id/textView2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="232dp"
+      android:layout_marginStart="48dp"
+      android:text="@string/AddStudentTaskMessage"
+      android:textSize="14sp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/student_name_EditText"
+      android:layout_width="259dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="172dp"
+      android:layout_marginStart="48dp"
+      android:hint="@string/EnterStudentName"
+      android:minHeight="48dp"
+      android:textColorHint="#757575"
+      android:textSize="15sp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

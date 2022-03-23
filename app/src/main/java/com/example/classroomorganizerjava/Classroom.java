@@ -1,16 +1,20 @@
 package com.example.classroomorganizerjava;
 
 import android.content.Context;
+import android.os.Build.VERSION_CODES;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import androidx.annotation.RequiresApi;
+import androidx.core.graphics.drawable.IconCompat.IconType;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -47,7 +51,11 @@ public class Classroom {
   }
 
   public Student getStudent(String name) {
-    return this.students.get(findStudent(name));
+    int index = findStudent(name);
+    if (index != -1) {
+      return this.students.get(index);
+    }
+    return null;
   }
 
   public boolean checkFile(Context context) {
@@ -61,10 +69,16 @@ public class Classroom {
 
   private int findStudent(String name) {
     for (int i = 0; i < this.students.size(); i++) {
-      if (this.students.get(i).getName() == name) {
+      if (this.students.get(i).getName().equals(name)) {
         return i;
       }
     }
+    String names = "";
+    for (Student s : this.students) {
+      names += " " + s.getName();
+    }
+    Log.w(TAG,"Student not found\nName passed:" + name + ".");
+    Log.w(TAG, "names:" + names + ".");
     return -1;
   }
 
@@ -133,11 +147,30 @@ public class Classroom {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("Classroom\n");
     for (Student s : this.students) {
-      sb.append(s.toString());
+      sb.append(s.toString()).append("\n\n");
     }
     return sb.toString();
+  }
+
+  @RequiresApi(api = VERSION_CODES.O)
+  public void initializeFakeData(Context context) {
+    clearData(context);
+    String oddDays = "MONDAY WEDNESDAY FRIDAY";
+    String evenDays = "TUESDAY THURSDAY";
+    ArrayList<Task> tasks = new ArrayList<Task>();
+    Task t1 = new Task("potty", oddDays, "09:00", "Daniel Tiger");
+    Task t2 = new Task("mask", oddDays, "13:00", "Peppa Pig");
+    Task t3 = new Task("potty", evenDays, "10:30", "Daniel Tiger");
+    Task t4 = new Task("mask", evenDays, "14:30", "Peppa Pig");
+    tasks.add(t1);
+    tasks.add(t2);
+    this.addStudent(new Student("Kevin", tasks), context);
+    tasks.clear();
+    tasks.add(t3);
+    tasks.add(t4);
+    this.addStudent(new Student("Caves", tasks), context);
+    saveFile(context);
   }
 }
   /**

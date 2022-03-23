@@ -4,61 +4,74 @@ import androidx.annotation.NonNull;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Student {
     private String name;
     private ArrayList<Task> tasks;
-    private List<DayOfWeek> daysPresent;
 
     public Student(String name, ArrayList<Task> tasks) {
         this.name = name;
         this.tasks = new ArrayList<>(tasks);
-        this.daysPresent = null;
     }
-    public Student(String name) {
-        this.name = name;
+
+    public Student(String data) {
+        String[] lines = data.split("\n");
+        this.name = lines[0];
         this.tasks = new ArrayList<>();
-        this.daysPresent = null;
+        for (String l : Arrays.copyOfRange(lines,1, lines.length)) {
+            this.tasks.add(new Task(l));
+        }
     }
 
     public String getName() {
-        return name;
-    }
-
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public List<DayOfWeek> getDaysPresent() {
-        return daysPresent;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setDaysPresent(List<DayOfWeek> daysPresent) {
-        this.daysPresent = daysPresent;
+    public ArrayList<Task> getTasks() {
+        return new ArrayList<>(this.tasks);
     }
 
-    public void addTask(Task t){
-        this.tasks.add(t);
-    }
+    public Task getRecentTask() { return this.tasks.get(this.tasks.size() - 1); }
 
-    public void addTask(String t) { this.tasks.add(new Task(t)); }
+    public void addTask(String task) { this.tasks.add(new Task(task)); }
 
-    public boolean removeTask(Task t){
+    public boolean removeTask (String task) {
+        Task t = new Task(task);
         return this.tasks.remove(t);
     }
 
-    public void updateTask(ArrayList<Task> t){
-        this.tasks = t;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Student student = (Student) o;
+        return Objects.equals(name, student.name) && Objects
+            .equals(tasks, student.tasks);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, tasks);
     }
 
     @NonNull
     @Override
     public String toString() {
-        return "\nStudent: " + this.name + "\n" + this.tasks.toString();
+        String ret = "Student: " + this.name;
+        for (Task t : this.tasks) {
+            ret += "\n" + t.toString();
+        }
+        return ret;
     }
 }
