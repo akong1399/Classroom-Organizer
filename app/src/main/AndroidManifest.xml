@@ -1,61 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.classroomorganizerjava">
+  package="com.example.classroomorganizerjava">
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+  <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.ClassroomOrganizerJava">
-        <activity android:name=".CalendarViewActivity"
-            android:parentActivityName=".MainActivity">
+      android:allowBackup="true"
+      android:icon="@mipmap/ic_launcher"
+      android:label="@string/app_name"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:supportsRtl="true"
+      android:theme="@style/Theme.ClassroomOrganizerJava">
+        <activity
+          android:exported="false"
+          android:label="@string/title_activity_play_audio"
+          android:name=".PlayAudioActivity"
+          android:theme="@style/Theme.ClassroomOrganizerJava.NoActionBar" />
+        <activity
+          android:name=".CalendarViewActivity"
+          android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-            android:exported="false" />
-        </activity>
-        <activity android:name=".StudentViewActivity"
-            android:parentActivityName=".MainActivity">
-
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-            android:exported="false" />
-        </activity>
-        <activity android:name=".RemoveStudentActivity"
-            android:parentActivityName=".MainActivity">
-
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-            android:exported="false" />
-        </activity>
-        <activity android:name=".AddStudentActivity"
-            android:parentActivityName=".MainActivity">
-
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+              android:name="android.support.PARENT_ACTIVITY"
+              android:value=".MainActivity" />
             android:exported="false" />
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.ClassroomOrganizerJava.NoActionBar">
+          android:name=".StudentViewActivity"
+          android:parentActivityName=".MainActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+              android:name="android.support.PARENT_ACTIVITY"
+              android:value=".MainActivity" />
+            android:exported="false" />
+        </activity>
+        <activity
+          android:name=".RemoveStudentActivity"
+          android:parentActivityName=".MainActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+              android:name="android.support.PARENT_ACTIVITY"
+              android:value=".MainActivity" />
+            android:exported="false" />
+        </activity>
+        <activity
+          android:name=".AddStudentActivity"
+          android:parentActivityName=".MainActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+              android:name="android.support.PARENT_ACTIVITY"
+              android:value=".MainActivity" />
+            android:exported="false" />
+        </activity>
+        <activity
+          android:exported="true"
+          android:label="@string/app_name"
+          android:name=".MainActivity"
+          android:theme="@style/Theme.ClassroomOrganizerJava.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".AlarmBroadcastReceiver" />
+
+<!--        <receiver android:name=".AlarmBroadcastReceiver"-->
+<!--          android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.BOOT_COMPLETED" />-->
+<!--                <action android:name="com.example.classroomorganizerjava" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
+
+        <service android:name=".AlarmService" />
     </application>
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
 
 </manifest>
