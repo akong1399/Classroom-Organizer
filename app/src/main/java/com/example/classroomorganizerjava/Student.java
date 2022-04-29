@@ -1,5 +1,6 @@
 package com.example.classroomorganizerjava;
 
+import android.util.Log;
 import androidx.annotation.NonNull;
 
 import java.time.DayOfWeek;
@@ -9,6 +10,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Student {
+
+    private static final String TAG = "Student";
     private String name;
     private ArrayList<Task> tasks;
 
@@ -40,7 +43,17 @@ public class Student {
 
     public Task getRecentTask() { return this.tasks.get(this.tasks.size() - 1); }
 
-    public void addTask(String task) { this.tasks.add(new Task(task)); }
+    public Alarm addTask(String task) {
+        Task t = new Task(task);
+        Log.e(TAG, "Curr tasks: " + this.tasks.get(this.tasks.size() - 1));
+        Log.e(TAG, "new task?: "  + t);
+        Log.e(TAG, "contains?: " + this.tasks.get(this.tasks.size() - 1).equals(t));
+        if (this.tasks.contains(t)) {
+            return null;
+        }
+        this.tasks.add(t);
+        return t.getAlarm();
+    }
 
     public boolean removeTask (String task) {
         Task t = new Task(task);

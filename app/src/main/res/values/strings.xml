@@ -14,7 +14,9 @@
   <string name="TaskName">Name</string>
   <string name="TaskTime">Time</string>
   <string name="TaskFrequency">Frequency</string>
-  <string name="TaskAudio">Audio</string>
+  <string name="TaskAudio">Task Audio</string>
+  <string name="InitialAudio">Initial Audio</string>
+  <string name="AudioFileName">Name Audio</string>
   <string name="SaveTask">Save Task</string>
   <string name="SaveAddStudent">Save</string>
   <string name="EditTaskList">Edit Task List</string>
@@ -41,13 +43,6 @@
   <string name="hello_first_fragment">Hello first fragment</string>
 
   <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-  <string-array name="Audios">
-    <item>Daniel Tiger</item>
-    <item>Peppa Pig</item>
-    <item>Custom Audio 1</item>
-    <item>Custom Audio 2</item>
-    <item>Custom Audio 3</item>
-  </string-array>
   <string-array name="universal_audios">
     <item>none</item>
     <item>bell</item>
@@ -62,12 +57,11 @@
     <item>ash</item>
     <item>candice</item>
     <item>iman</item>
-    <item>jonah</item>
     <item>josiah</item>
     <item>kyra</item>
     <item>matthew</item>
     <item>maya</item>
-    <item>noami</item>
+    <item>naomi</item>
   </string-array>
   <string-array name="task_audios">
     <item>none</item>

@@ -8,6 +8,16 @@
   tools:context=".MainActivity">
 
     <Button
+      android:id="@+id/fakeDataButton2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="32dp"
+      android:layout_marginStart="340dp"
+      android:text="Reset Data"
+      android:visibility="gone"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+    <Button
       android:id="@+id/add_student_button"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -16,16 +26,36 @@
       android:text="Edit"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
+
     <Button
       android:id="@+id/fakeDataButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="32dp"
-      android:layout_marginStart="532dp"
+      android:layout_marginTop="76dp"
+      android:layout_marginStart="616dp"
       android:text="Fake Data"
+      android:visibility="gone"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
-
+    <Button
+      android:id="@+id/playAudioPage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="32dp"
+      android:layout_marginStart="44dp"
+      android:text="Play Audio"
+      app:layout_constraintStart_toEndOf="@+id/add_student_button"
+      app:layout_constraintTop_toTopOf="parent" />
+    <Button
+      android:id="@+id/recordAudioPage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="32dp"
+      android:layout_marginStart="44dp"
+      android:text="Record Audio"
+      android:visibility="invisible"
+      app:layout_constraintStart_toEndOf="@+id/playAudioPage"
+      app:layout_constraintTop_toTopOf="parent" />
     <TextView
       android:id="@+id/classroomTextView"
       android:layout_width="wrap_content"
@@ -40,6 +70,8 @@
       android:id="@+id/appBarLayout"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginTop="268dp"
+      android:layout_marginStart="388dp"
       android:theme="@style/Theme.ClassroomOrganizerJava.AppBarOverlay"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
@@ -50,8 +82,8 @@
       android:layout_marginBottom="16dp"
       app:layout_behavior="@string/appbar_scrolling_view_behavior"
       app:layout_constraintBottom_toBottomOf="parent"
-      tools:ignore="SpeakableTextPresentCheck"
-      tools:layout_editor_absoluteX="0dp">
+      app:layout_constraintStart_toStartOf="parent"
+      tools:ignore="SpeakableTextPresentCheck">
 
         <TextView
           android:id="@+id/textView"
@@ -64,14 +96,5 @@
           android:layout_height="wrap_content"
           android:text="TextView" />
     </androidx.viewpager.widget.ViewPager>
-    <Button
-      android:id="@+id/playAudioPage"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="104dp"
-      android:layout_marginStart="532dp"
-      android:text="Play Audio"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

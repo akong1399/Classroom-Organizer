@@ -36,10 +36,12 @@ public class AddStudentActivity extends AppCompatActivity {
 //    textView.setText(message);
 
     Spinner spinnerAudios = findViewById(R.id.audio_menu_spinner);
-    ArrayAdapter<CharSequence> adapter = ArrayAdapter
-        .createFromResource(this, R.array.Audios, android.R.layout.simple_spinner_item);
-    adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-    spinnerAudios.setAdapter(adapter);
+    Spinner spinnerAudios2 = findViewById(R.id.audio_menu_spinner2);
+    Spinner spinnerAudios3 = findViewById(R.id.audio_menu_spinner3);
+//    ArrayAdapter<CharSequence> adapter = ArrayAdapter
+//        .createFromResource(this, R.array.Audios, android.R.layout.simple_spinner_item);
+//    adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+//    spinnerAudios.setAdapter(adapter);
 
     RadioButton mondayRadioButton = (RadioButton) findViewById(
         R.id.monday_radioButton); // Initiate Monday radio button
@@ -148,7 +150,9 @@ public class AddStudentActivity extends AppCompatActivity {
             }
           }
           task += ", " + timeView.getText().toString() + ", ";
-          task += spinnerAudios.getSelectedItem().toString();
+          task += spinnerAudios.getSelectedItem().toString() + ", ";
+          task += spinnerAudios2.getSelectedItem().toString() + ", ";
+          task += spinnerAudios3.getSelectedItem().toString();
           Intent i = new Intent(AddStudentActivity.this, MainActivity.class);
           i.putExtra("newTaskString",task);
           Log.i(TAG, "New Task here: " + task);

@@ -159,10 +159,10 @@ public class Classroom {
     String oddDays = "MONDAY WEDNESDAY FRIDAY";
     String evenDays = "TUESDAY THURSDAY";
     ArrayList<Task> tasks = new ArrayList<Task>();
-    Task t1 = new Task("potty", oddDays, "09:00", "Daniel Tiger");
-    Task t2 = new Task("mask", oddDays, "13:00", "Peppa Pig");
-    Task t3 = new Task("potty", evenDays, "10:30", "Daniel Tiger");
-    Task t4 = new Task("mask", evenDays, "14:30", "Peppa Pig");
+    Task t1 = new Task("potty", oddDays, "09:00", "blink", "none", "none");
+    Task t2 = new Task("mask", oddDays, "13:00", "blink", "none", "none");
+    Task t3 = new Task("potty", evenDays, "10:30", "blink", "none", "none");
+    Task t4 = new Task("mask", evenDays, "14:30", "blink", "none", "none");
     tasks.add(t1);
     tasks.add(t2);
     this.addStudent(new Student("Kevin", tasks), context);

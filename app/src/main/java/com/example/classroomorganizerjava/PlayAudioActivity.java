@@ -100,23 +100,6 @@ public class PlayAudioActivity extends AppCompatActivity {
       Log.e(TAG,"Media Player failed: " + e);
       return;
     }
-//    mediaPlayerActive = true;
     mp.start();
-//    mp.setOnCompletionListener(new OnCompletionListener() {
-//      @Override
-//      public void onCompletion(MediaPlayer mediaPlayer) {
-//        mediaPlayerActive = false;
-//        mp.stop();
-//        mp.release();
-//      }
-//    });
-  }
-
-  @Override
-  public boolean onSupportNavigateUp() {
-    NavController navController = Navigation
-        .findNavController(this, R.id.nav_host_fragment_content_play_audio);
-    return NavigationUI.navigateUp(navController, appBarConfiguration)
-        || super.onSupportNavigateUp();
   }
 }

@@ -1,10 +1,17 @@
 package com.example.classroomorganizerjava;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 
+import android.os.Environment;
 import android.util.Log;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -18,6 +25,11 @@ import android.widget.Button;
 import com.example.classroomorganizerjava.ui.main.SectionsPagerAdapter;
 import com.example.classroomorganizerjava.databinding.ActivityMainBinding;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 
@@ -29,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
   private Button button;
   private Classroom c;
 
-  @RequiresApi(api = Build.VERSION_CODES.O)
+  @RequiresApi(api = VERSION_CODES.O)
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -51,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     });
 
     button = (Button) findViewById(R.id.add_student_button);
-    button.setOnClickListener(new View.OnClickListener() {
+    button.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
         startActivity(new Intent(MainActivity.this, AddStudentActivity.class));
@@ -59,22 +71,32 @@ public class MainActivity extends AppCompatActivity {
     });
 
     button = findViewById(R.id.playAudioPage);
-    button.setOnClickListener(new View.OnClickListener() {
+    button.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
         startActivity(new Intent(MainActivity.this, PlayAudioActivity.class));
       }
     });
 
+    button = findViewById(R.id.recordAudioPage);
+    button.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        startActivity(new Intent(MainActivity.this, RecordAudioActivity.class));
+      }
+    });
+
     TextView classroomTextView = findViewById(R.id.classroomTextView);
     classroomTextView.setText(c.toString());
+
+    createNotificationChannnel();
+
+    AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+    Log.e(TAG, "Next exact alarm status: " + alarmManager.getNextAlarmClock());
+
   }
 
-  private void mediaPlayer() {
-    MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.potty_song);
-    mediaPlayer.start(); // no need to call prepare(); create() does that for you
-  }
-
+  @RequiresApi(api = VERSION_CODES.M)
   private void getNewTaskIntent() {
     Intent newTaskIntent = getIntent();
     Bundle newTask = newTaskIntent.getExtras();
@@ -87,7 +109,10 @@ public class MainActivity extends AppCompatActivity {
         }
         Student s = c.getStudent(data.split("\n")[0]);
         if (s != null) {
-          s.addTask(data.split("\n")[1]);
+          Alarm alarm = s.addTask(data.split("\n")[1]);
+          if (alarm != null){
+            alarm.schedule(getApplicationContext());
+          }
         } else {
           c.addStudent(new Student(data), getApplicationContext());
         }
@@ -119,6 +144,22 @@ public class MainActivity extends AppCompatActivity {
     }
     else {
       Log.i(TAG, "No Student Name Intent");
+    }
+  }
+
+  @RequiresApi(api = VERSION_CODES.O)
+  private void createNotificationChannnel() {
+    try {
+      NotificationChannel serviceChannel = new NotificationChannel(
+          "ALARM_SERVICE_CHANNEL",
+          "Alarm Service Channel",
+          NotificationManager.IMPORTANCE_DEFAULT
+      );
+
+      NotificationManager manager = getSystemService(NotificationManager.class);
+      manager.createNotificationChannel(serviceChannel);
+    } catch (Exception e) {
+      Log.e(TAG, "createNotificationChannel() failed");
     }
   }
 }
